@@ -6,7 +6,7 @@ async function chatWithLLM(userQuery) {
     console.log("Menjalankan chatWithLLM dengan query:", userQuery);
 
     const context = await retrieveContext(userQuery);
-    console.log("Konteks dari ChromaDB:\n", context || "(Kosong)");
+    // console.log("Konteks dari ChromaDB:\n", context || "(Kosong)");
 
     const payload = {     // Buat payload dengan tambahan konteks dari database                                              
         model: process.env.MODEL_NAME,

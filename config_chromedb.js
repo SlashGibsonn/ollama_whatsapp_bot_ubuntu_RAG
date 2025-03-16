@@ -5,7 +5,6 @@ const pdfParse = require("pdf-parse");
 const { PDFDocument } = require("pdf-lib");
 const { execSync } = require("child_process");
 
-// Pastikan ChromaDB berjalan
 const chroma = new ChromaClient({ path: process.env.CHROMADB_URL });
 let collection = null;
 
@@ -102,7 +101,7 @@ async function retrieveContext(query) {
   }
 }
 
-async function checkCollectionExists() {
+async function checkCollectionExists() {        // Tujuan debugging
   try {
     const collections = await chroma.listCollections();
     return collections.some(col => col.name === "knowledge_base");
@@ -112,7 +111,7 @@ async function checkCollectionExists() {
   }
 }
 
-async function listDocuments() {
+async function listDocuments() {              // Tujuan debugging
   try {
     if (!collection) await initDB();
     const docs = await collection.get();
