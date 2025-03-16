@@ -1,22 +1,37 @@
+const fs = require("fs");
+const path = require("path");
 const { initDB, addDocument, retrieveContext, clearCollection } = require("./db");
+
+const PDF_FOLDER = "./pdfs"; // Ganti dengan path folder tempat menyimpan PDF
 
 async function insertSampleData() {
   await initDB();
   await clearCollection();
 
-  // Tambahkan teks biasa
-  await addDocument("Slashgibson is a Mobile Legends player that achieved many trophies troughout his career.", "doc1");
+  fs.readdir(PDF_FOLDER, async (err, files) => {
+    if (err) {
+      console.error("Error membaca folder:", err);
+      return;
+    }
 
-  // Tambahkan PDF
-  await addDocument("./tes.pdf", "pdf1", true, "./tes.pdf");
-  await addDocument("./tes2.pdf", "pdf2", true, "./tes2.pdf");
-  await addDocument("./tes3.pdf", "pdf3", true, "./tes3.pdf");
+    const pdfFiles = files.filter(file => file.endsWith(".pdf"));
 
-  console.log("📄 Sample data inserted.");
+    if (pdfFiles.length === 0) {
+      console.log("Tidak ada file PDF dalam folder.");
+      return;
+    }
 
-  // Cek hasil penyimpanan
-  const testQuery = await retrieveContext("Mobile Legends");
-  console.log("🔍 Cek hasil simpan:", testQuery);
+    for (const file of pdfFiles) {
+      const filePath = path.join(PDF_FOLDER, file);
+      const docId = path.basename(file, ".pdf"); // Gunakan nama file sebagai docId
+      await addDocument(filePath, docId, true, filePath);
+    }
+
+    console.log("Semua PDF dalam folder telah ditambahkan.");
+
+    const testQuery = await retrieveContext("Mobile Legends"); // Bisa diisi apa saja
+    console.log("Cek hasil simpan:", testQuery);
+  });
 }
 
 insertSampleData();
