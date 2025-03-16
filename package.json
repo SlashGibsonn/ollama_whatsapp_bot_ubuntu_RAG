@@ -1,7 +1,7 @@
 {
   "name": "testing_rag",
   "version": "1.0.0",
-  "description": "1. Masuk ke direktori proyek:\r    ```sh\r    cd ollama_whatsapp_bot_ubuntu_RAG\r    ```",
+  "description": "remember whatever, it seems like forever ago",
   "main": "main.js",
   "dependencies": {
     "axios": "^1.8.3",
