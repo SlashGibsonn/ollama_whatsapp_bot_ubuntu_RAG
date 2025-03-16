@@ -1,6 +1,6 @@
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
-const { chatWithLLM } = require("./config_llm");
+const { chatWithLLM } = require("./config/config_llm");
 
 const conversationHistory = {};
 

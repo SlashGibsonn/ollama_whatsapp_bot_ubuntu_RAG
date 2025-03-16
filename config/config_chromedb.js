@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config({ path: '../.env' });
 const { ChromaClient } = require("chromadb");
 const fs = require("fs");
 const pdfParse = require("pdf-parse");

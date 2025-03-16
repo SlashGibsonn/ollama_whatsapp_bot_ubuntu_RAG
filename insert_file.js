@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { initDB, addDocument, retrieveContext, clearCollection } = require("./config_chromedb");
+const { initDB, addDocument, retrieveContext, clearCollection } = require("./config/config_chromedb");
 
 const PDF_FOLDER = "./pdfs"; // Ganti dengan path folder tempat menyimpan PDF
 

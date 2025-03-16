@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config({ path: '../.env' });
 const { retrieveContext } = require("./config_chromedb");
 const url = process.env.OLLAMA_URL;
 
