@@ -1,4 +1,8 @@
 {
+  "name": "testing_rag",
+  "version": "1.0.0",
+  "description": "1. Masuk ke direktori proyek:\r    ```sh\r    cd ollama_whatsapp_bot_ubuntu_RAG\r    ```",
+  "main": "main.js",
   "dependencies": {
     "axios": "^1.8.3",
     "chromadb": "^2.0.1",
@@ -8,5 +12,20 @@
     "pdf-parse": "^1.1.1",
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.26.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SlashGibsonn/ollama_whatsapp_bot_ubuntu_RAG.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SlashGibsonn/ollama_whatsapp_bot_ubuntu_RAG/issues"
+  },
+  "homepage": "https://github.com/SlashGibsonn/ollama_whatsapp_bot_ubuntu_RAG#readme"
 }
