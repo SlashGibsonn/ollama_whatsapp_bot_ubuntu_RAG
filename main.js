@@ -1,7 +1,7 @@
 const { retrieveContext } = require("./db");
 
 // URL API lokal Ollama
-const url = "http://192.168.194.89:11434/api/chat";
+const url = process.env.OLLAMA_URL;
 
 // Fungsi utama untuk mengirim pertanyaan dan mendapatkan jawaban dari Ollama
 async function chatWithLLM(userQuery) {
@@ -13,7 +13,7 @@ async function chatWithLLM(userQuery) {
 
     // Buat payload dengan tambahan konteks dari database
     const payload = {
-        model: "deepseek-llm:7b",
+        model: process.env.MODEL_NAME,
         messages: [
             {
                 role: "system",

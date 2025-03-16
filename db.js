@@ -5,7 +5,7 @@ const { PDFDocument } = require("pdf-lib");
 const { execSync } = require("child_process");
 
 // Pastikan ChromaDB berjalan di Docker pada port 8000
-const chroma = new ChromaClient({ path: "http://localhost:8000" });
+const chroma = new ChromaClient({ path: process.env.CHROMADB_URL });
 let collection = null;
 
 // Inisialisasi database dan koleksi
