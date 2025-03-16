@@ -1,3 +1,4 @@
 .env
-pdfs/
+pdfs/*
 node_modules/
+!.gitkeep
