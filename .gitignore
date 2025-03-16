@@ -1,4 +1,4 @@
 .env
 pdfs/*
 node_modules/
-!.gitkeep
+!pdfs/.gitkeep
