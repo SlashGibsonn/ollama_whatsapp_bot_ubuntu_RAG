@@ -14,12 +14,12 @@
 
 3. Jalankan untuk memperbarui file ke ChromaDB dari folder pdfs:
    ```sh
-   node store.js
+   node insert_file.js
    ```
 
 4. Jalankan program utama:
    ```sh
-   node index.js
+   node main.js
    ```
 
 ## Catatan
