@@ -1,54 +1,62 @@
-require("dotenv").config();
-const { retrieveContext } = require("./db");
-const url = process.env.OLLAMA_URL;
+const { Client, LocalAuth } = require("whatsapp-web.js");
+const qrcode = require("qrcode-terminal");
+const { chatWithLLM } = require("./config_llm");
 
-async function chatWithLLM(userQuery) {
-    console.log("Menjalankan chatWithLLM dengan query:", userQuery);
+const conversationHistory = {};
 
-    const context = await retrieveContext(userQuery);
-    console.log("Konteks dari ChromaDB:\n", context || "(Kosong)");
+async function processMessage(text, userId) {             // Fungsi untuk memproses pesan dengan RAG (menggunakan ChromaDB)
+  try {
+    console.log(`Pesan diterima dari ${userId}: ${text}`);
 
-    const payload = {     // Buat payload dengan tambahan konteks dari database                                              
-        model: process.env.MODEL_NAME,
-        messages: [
-            {
-                role: "system",
-                content: "Here is some information that may be useful to answer the question. If this information is relevant, use it. If there is no relevant information, still try to answer based on the knowledge you have. And answer it with consice output.\n\n" + context
-            },
-            { role: "user", content: userQuery }
-        ],
-        stream: false 
-    };
-
-    console.log("Payload yang dikirim ke Ollama:", JSON.stringify(payload, null, 2));
-
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) {
-            console.error(`Error HTTP: ${response.status}`);
-            console.error(await response.text());
-            return "Maaf, terjadi kesalahan dalam mengambil data dari Ollama.";
-        }
-
-        const jsonResponse = await response.json();
-        console.log("Response dari Ollama:", JSON.stringify(jsonResponse, null, 2));
-
-        if (jsonResponse.message && jsonResponse.message.content) {
-            console.log("Jawaban dari Ollama:", jsonResponse.message.content);
-            return jsonResponse.message.content;
-        } else {
-            console.error("Format response tidak sesuai harapan:", jsonResponse);
-            return "Maaf, format respons tidak sesuai.";
-        }
-    } catch (error) {
-        console.error("Fetch error:", error);
-        return "Maaf, terjadi kesalahan dalam mengambil data dari Ollama.";
+    if (!conversationHistory[userId]) {
+      conversationHistory[userId] = [];
     }
+
+    conversationHistory[userId].push({ role: "user", content: text });
+
+    if (conversationHistory[userId].length > 10) {
+      conversationHistory[userId].shift();
+    }
+
+    const response = await chatWithLLM(text);
+    console.log(`Jawaban untuk ${userId}: ${response}`);
+
+    if (!response || response.trim() === "") {
+      return "Maaf, saya tidak dapat menemukan jawaban yang sesuai.";
+    }
+
+    conversationHistory[userId].push({ role: "assistant", content: response });
+
+    return response;
+  } catch (error) {
+    console.error("Error processing message:", error);
+    return "Maaf, terjadi kesalahan dalam memproses pesan Anda.";
+  }
 }
 
-module.exports = { chatWithLLM };
+const client = new Client({
+  authStrategy: new LocalAuth(),
+  puppeteer: {
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],    // Mencegah error saat dijalankan sebagai root
+  },
+});
+
+client.on("qr", (qr) => {
+  qrcode.generate(qr, { small: true });
+});
+
+client.on("ready", () => {
+  console.log("WhatsApp Client siap!");
+});
+
+client.on("message", async (message) => {
+  if (message.from.includes("status")) return;
+
+  console.log(`Pesan diterima dari ${message.from}: ${message.body}`);
+
+  const response = await processMessage(message.body, message.from);
+
+  message.reply(response);
+});
+
+client.initialize();
