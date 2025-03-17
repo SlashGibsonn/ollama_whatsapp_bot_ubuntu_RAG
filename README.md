@@ -27,4 +27,5 @@
 - Model LLM dan ChromaDB berjalan di server lokal atau remote.
 - Memerlukan dua akun WhatsApp, satu sebagai bot dan satu lagi sebagai user.
 - Saat pertama kali menjalankan bot, lakukan scan QR Code pada akun WhatsApp bot untuk autentikasi.
+- Tidak perlu pakai .env
 
