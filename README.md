@@ -12,12 +12,17 @@
    npm install
    ```
 
-3. Jalankan untuk memperbarui file ke ChromaDB dari folder pdfs:
+3. Jalankan docker chromadb:
+   ```sh
+   docker compose up -d
+   ```
+
+4. Jalankan untuk memperbarui file ke ChromaDB dari folder pdfs:
    ```sh
    node insert_file.js
    ```
 
-4. Jalankan program utama:
+5. Jalankan program utama:
    ```sh
    node main.js
    ```
