@@ -25,7 +25,7 @@
  5. Tambahan Library untuk Ubuntu 24.04 ke atas
 
 ```sh
-sudo apt install -y \
+  sudo apt install -y \
   libatk-bridge2.0-0 \
   libatk1.0-0 \
   libcups2 \
