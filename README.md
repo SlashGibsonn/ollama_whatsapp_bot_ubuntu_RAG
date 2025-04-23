@@ -22,7 +22,7 @@
    node insert_file.js
    ```
 
- 5. Tambahan Library untuk Ubuntu 24.04 ke atas
+5. Tambahan Library untuk Ubuntu 24.04 ke atas
 
    ```sh
    sudo apt install -y \
