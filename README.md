@@ -24,27 +24,28 @@
 
  5. Tambahan Library untuk Ubuntu 24.04 ke atas
 
-```sh
-  sudo apt install -y \
-  libatk-bridge2.0-0 \
-  libatk1.0-0 \
-  libcups2 \
-  libdrm2 \
-  libxcomposite1 \
-  libxdamage1 \
-  libxrandr2 \
-  libgbm1 \
-  libasound2t64 \
-  libpangocairo-1.0-0 \
-  libpango-1.0-0 \
-  libgtk-3-0 \
-  libnss3 \
-  libxss1 \
-  libxshmfence1 \
-  libx11-xcb1 \
-  libxinerama1 \
-  libglu1-mesa
-```
+   ```sh
+      sudo apt install -y \
+      libatk-bridge2.0-0 \
+      libatk1.0-0 \
+      libcups2 \
+      libdrm2 \
+      libxcomposite1 \
+      libxdamage1 \
+      libxrandr2 \
+      libgbm1 \
+      libasound2t64 \
+      libpangocairo-1.0-0 \
+      libpango-1.0-0 \
+      libgtk-3-0 \
+      libnss3 \
+      libxss1 \
+      libxshmfence1 \
+      libx11-xcb1 \
+      libxinerama1 \
+      libglu1-mesa
+   ```
+   
 6. Jalankan program utama:
    ```sh
    node main.js
