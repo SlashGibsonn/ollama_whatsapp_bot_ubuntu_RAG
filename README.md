@@ -44,7 +44,7 @@ sudo apt install -y \
   libx11-xcb1 \
   libxinerama1 \
   libglu1-mesa
-
+```
 6. Jalankan program utama:
    ```sh
    node main.js
