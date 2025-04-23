@@ -22,7 +22,29 @@
    node insert_file.js
    ```
 
-5. Jalankan program utama:
+5. Tambahan library untuk Ubuntu 24.00 ke atas:
+   ```sh
+   sudo apt install -y \
+  libatk-bridge2.0-0 \
+  libatk1.0-0 \
+  libcups2 \
+  libdrm2 \
+  libxcomposite1 \
+  libxdamage1 \
+  libxrandr2 \
+  libgbm1 \
+  libasound2t64 \
+  libpangocairo-1.0-0 \
+  libpango-1.0-0 \
+  libgtk-3-0 \
+  libnss3 \
+  libxss1 \
+  libxshmfence1 \
+  libx11-xcb1 \
+  libxinerama1 \
+  libglu1-mesa
+
+6. Jalankan program utama:
    ```sh
    node main.js
    ```
@@ -32,5 +54,5 @@
 - Model LLM dan ChromaDB berjalan di server lokal atau remote.
 - Memerlukan dua akun WhatsApp, satu sebagai bot dan satu lagi sebagai user.
 - Saat pertama kali menjalankan bot, lakukan scan QR Code pada akun WhatsApp bot untuk autentikasi.
-- Tidak perlu pakai .env
+- __Tidak perlu pakai .env__
 

@@ -1,6 +1,6 @@
 require('dotenv').config({ path: '../.env' });
 const { retrieveContext } = require("./config_chromedb");
-const url = process.env.OLLAMA_URL;
+const url = "http://*******:11434/api/chat";
 
 async function chatWithLLM(userQuery) {
     console.log("Menjalankan chatWithLLM dengan query:", userQuery);
@@ -9,7 +9,7 @@ async function chatWithLLM(userQuery) {
     // console.log("Konteks dari ChromaDB:\n", context || "(Kosong)");
 
     const payload = {     // Buat payload dengan tambahan konteks dari database                                              
-        model: process.env.MODEL_NAME,
+        model: "deepseek-llm:7b",
         messages: [
             {
                 role: "system",

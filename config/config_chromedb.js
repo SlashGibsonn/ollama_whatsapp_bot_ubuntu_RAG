@@ -5,7 +5,7 @@ const pdfParse = require("pdf-parse");
 const { PDFDocument } = require("pdf-lib");
 const { execSync } = require("child_process");
 
-const chroma = new ChromaClient({ path: process.env.CHROMADB_URL });
+const chroma = new ChromaClient({ path: 'http://localhost:8000' });
 let collection = null;
 
 async function initDB() {
