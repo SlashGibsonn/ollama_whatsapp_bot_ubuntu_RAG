@@ -1,8 +1,8 @@
 # Ollama Model WhatsApp Bot RAG (Ubuntu)
 
-## Penggunaan
+## Usage
 
-1. Masuk ke direktori proyek:
+1. Move to project directory:
    ```sh
    cd ollama_whatsapp_bot_ubuntu_RAG
    ```
@@ -12,17 +12,17 @@
    npm install
    ```
 
-3. Jalankan docker chromadb:
+3. Run chromadb docker:
    ```sh
    docker compose up -d
    ```
 
-4. Jalankan untuk memperbarui file ke ChromaDB dari folder pdfs:
+4. Run to add certain files to pdfs folder:
    ```sh
    node insert_file.js
    ```
 
-5. Tambahan Library untuk Ubuntu 24.04 ke atas
+5. Library addition if you're using Ubuntu 24.04 or later:
 
    ```sh
    sudo apt install -y \
@@ -46,15 +46,15 @@
    libglu1-mesa
    ```
 
-6. Jalankan program utama:
+6. Run the main program:
    ```sh
    node main.js
    ```
 
-## Catatan
-- Tambahkan file pdf anda ke folder pdfs.
-- Model LLM dan ChromaDB berjalan di server lokal atau remote.
-- Memerlukan dua akun WhatsApp, satu sebagai bot dan satu lagi sebagai user.
-- Saat pertama kali menjalankan bot, lakukan scan QR Code pada akun WhatsApp bot untuk autentikasi.
-- __Tidak perlu pakai .env__
+## Notes
+- Add your pdf files to pdfs folder.
+- LLM Model and ChromaDB can runs either on your local machine or remote server.
+- Requiring two WhatsApp account, one as bot and one as user.
+- When you running your bot for the first time, you'll be prompt a QR code to be scanned.
+- __No need for .env__
 
